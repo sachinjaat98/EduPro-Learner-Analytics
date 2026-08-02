@@ -1,0 +1,6 @@
+CourseID,CourseName,Category,Level,DurationHours
+C001,Python for Data Analysis,Data Science,Beginner,24
+C002,SQL Fundamentals,Data Science,Beginner,18
+C003,Digital Marketing,Marketing,Intermediate,20
+C004,Product Management,Business,Intermediate,16
+

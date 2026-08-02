@@ -1,0 +1,10 @@
+TransactionID,UserID,CourseID,EnrollmentDate,Amount,Status,Name,Age,Gender,City,SignupDate,CourseName,Category,Level,DurationHours,AgeGroup
+T001,U001,C001,2024-02-01,499,Completed,Aarav Sharma,22,Male,Delhi,2024-01-10,Python for Data Analysis,Data Science,Beginner,24,18-25
+T002,U002,C001,2024-02-05,499,Completed,Diya Patel,29,Female,Mumbai,2024-01-15,Python for Data Analysis,Data Science,Beginner,24,26-35
+T003,U003,C002,2024-02-12,399,Completed,Rohan Das,36,Male,Kolkata,2024-02-03,SQL Fundamentals,Data Science,Beginner,18,36-50
+T004,U004,C003,2024-03-01,449,Completed,Meera Nair,19,Female,Kochi,2024-02-21,Digital Marketing,Marketing,Intermediate,20,18-25
+T005,U005,C004,2024-03-11,599,Completed,Kabir Singh,44,Male,Chandigarh,2024-03-02,Product Management,Business,Intermediate,16,36-50
+T006,U006,C001,2024-03-18,499,Completed,Ananya Rao,31,Female,Bengaluru,2024-03-14,Python for Data Analysis,Data Science,Beginner,24,26-35
+T007,U002,C002,2024-04-02,399,Completed,Diya Patel,29,Female,Mumbai,2024-01-15,SQL Fundamentals,Data Science,Beginner,18,26-35
+T008,U001,C004,2024-04-15,599,Completed,Aarav Sharma,22,Male,Delhi,2024-01-10,Product Management,Business,Intermediate,16,18-25
+

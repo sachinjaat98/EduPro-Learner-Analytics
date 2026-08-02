@@ -1,4 +1,4 @@
-# EduPro Learner Demographics and Course Enrollment Analysis
+# EduPro Learner Analytics
 
 ## Project Overview
 
@@ -31,7 +31,7 @@ Three datasets are used:
 
 ## Dashboard
 
-(Add screenshots later)
+Run `streamlit run dashboard/app.py` from the repository root.
 
 ## Installation
 
@@ -41,7 +41,7 @@ streamlit run dashboard/app.py
 
 ## Project Structure
 
-(Add folder tree)
+The repository follows the requested `data/`, `notebooks/`, `src/`, `dashboard/`, and `reports/` layout. The included CSVs are a small, synthetic starter dataset; replace them with approved source data using the same columns.
 
 ## Results
 
@@ -50,3 +50,7 @@ streamlit run dashboard/app.py
 - Course popularity
 - Heatmaps
 - KPIs
+
+## Data pipeline
+
+Run `python -m src.preprocessing` to clean and merge the three raw CSV files into `data/processed/merged_data.csv`. The notebooks provide a guided version of the same workflow.
