@@ -36,13 +36,11 @@ def _normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
 
 @st.cache_data
 def load_data():
-    if not PROCESSED_DATA_PATH.exists():
-        from src.preprocessing import build_processed_data
-
-        build_processed_data(PROCESSED_DATA_PATH)
-
-    df = pd.read_csv(PROCESSED_DATA_PATH)
-    return _normalize_columns(df)
+    df = pd.read_csv(
+        PROCESSED_DATA_PATH,
+        parse_dates=["TransactionDate"]
+    )
+    return df
 
 
 def apply_filters(df):
