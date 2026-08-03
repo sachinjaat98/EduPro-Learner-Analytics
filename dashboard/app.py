@@ -1,30 +1,61 @@
-from pathlib import Path
-import sys
-import pandas as pd
 import streamlit as st
+from utils import load_data, apply_filters
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from src.analysis import kpis, course_popularity, demographic_summary, monthly_enrollments
-from src.visualization import course_bar, demographic_bar, monthly_line
-from src.preprocessing import build_processed_data
+st.set_page_config(
+    page_title="EduPro Analytics Dashboard",
+    page_icon="🎓",
+    layout="wide"
+)
 
-st.set_page_config(page_title="EduPro Learner Analytics", page_icon="📚", layout="wide")
-st.title("📚 EduPro Learner Analytics")
-st.caption("Explore learner demographics, enrollment behavior, course demand, and revenue.")
-data_path = Path(__file__).resolve().parents[1] / "data" / "processed" / "merged_data.csv"
-data = pd.read_csv(data_path, parse_dates=["EnrollmentDate"]) if data_path.exists() else build_processed_data()
+st.title("🎓 EduPro Analytics Dashboard")
 
-filters = st.sidebar.multiselect("Gender", sorted(data["Gender"].dropna().unique()), default=sorted(data["Gender"].dropna().unique()))
-filtered = data[data["Gender"].isin(filters)]
-metrics = kpis(filtered)
-cols = st.columns(4)
-for col, (label, value) in zip(cols, [("Learners", metrics["learners"]), ("Enrollments", metrics["enrollments"]), ("Courses", metrics["courses"]), ("Revenue", f"₹{metrics['revenue']:,.0f}")]):
-    col.metric(label, value)
+st.markdown("""
+### Learner Demographics and Course Enrollment Behavior Analysis
 
-left, right = st.columns(2)
-left.plotly_chart(course_bar(course_popularity(filtered)), use_container_width=True)
-right.plotly_chart(demographic_bar(demographic_summary(filtered, "AgeGroup"), "AgeGroup"), use_container_width=True)
-st.plotly_chart(monthly_line(monthly_enrollments(filtered)), use_container_width=True)
-st.subheader("Course summary")
-st.dataframe(course_popularity(filtered), use_container_width=True, hide_index=True)
+This dashboard provides interactive insights into:
 
+- Learner demographics
+- Enrollment behavior
+- Course popularity
+- Learning preferences
+""")
+
+df = load_data()
+
+df = apply_filters(df)
+
+st.divider()
+
+# KPIs
+
+col1, col2, col3, col4 = st.columns(4)
+
+with col1:
+    st.metric(
+        "Total Learners",
+        df["UserID"].nunique()
+    )
+
+with col2:
+    st.metric(
+        "Enrollments",
+        len(df)
+    )
+
+with col3:
+    st.metric(
+        "Courses",
+        df["CourseID"].nunique()
+    )
+
+with col4:
+    st.metric(
+        "Average Age",
+        round(df["Age"].mean(),1)
+    )
+
+st.divider()
+
+st.info(
+    "Use the navigation panel on the left to explore detailed analyses."
+)

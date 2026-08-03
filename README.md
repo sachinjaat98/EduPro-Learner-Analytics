@@ -1,56 +1,236 @@
-# EduPro Learner Analytics
+# 🎓 EduPro Learner Demographics and Course Enrollment Behavior Analysis
 
-## Project Overview
+## 📖 Project Overview
 
-This project analyzes learner demographics and enrollment behavior on the EduPro online learning platform using Python, Pandas, Plotly, Seaborn, and Streamlit.
+This project presents a comprehensive analysis of learner demographics and course enrollment behavior on the **EduPro Online Learning Platform**. The objective is to understand learner characteristics, enrollment trends, and course preferences using Exploratory Data Analysis (EDA) and an interactive Streamlit dashboard.
 
-## Objectives
+The analysis provides valuable insights that can help educational platforms make data-driven decisions regarding course development, learner engagement, marketing strategies, and accessibility.
 
-- Analyze learner demographics
-- Study enrollment patterns
-- Identify course popularity
-- Compare learner preferences across age and gender
-- Build an interactive analytics dashboard
+---
 
-## Dataset
+## 🎯 Objectives
 
-Three datasets are used:
+The project aims to answer the following analytical questions:
 
-- Users
-- Courses
-- Transactions
+- What is the age distribution of learners?
+- Which age groups are most active?
+- How does enrollment differ by gender?
+- Which course categories receive the highest enrollments?
+- Which course levels are most preferred?
+- How do age groups influence course preferences?
+- How do male and female learners differ in course selection?
+- What is the average number of courses taken per learner?
 
-## Technologies
+---
+
+## 📂 Dataset
+
+The project uses the **EduPro Online Platform** dataset consisting of three primary tables.
+
+### Users
+
+| Column |
+|---------|
+| UserID |
+| UserName |
+| Age |
+| Gender |
+
+### Courses
+
+| Column |
+|---------|
+| CourseID |
+| CourseName |
+| CourseCategory |
+| CourseType |
+| CourseLevel |
+
+### Transactions
+
+| Column |
+|---------|
+| TransactionID |
+| UserID |
+| CourseID |
+| TransactionDate |
+
+---
+
+## 🛠 Technologies Used
 
 - Python
 - Pandas
 - NumPy
-- Plotly
+- Matplotlib
 - Seaborn
+- Plotly
 - Streamlit
+- Jupyter Notebook
 
-## Dashboard
+---
 
-Run `streamlit run dashboard/app.py` from the repository root.
+## 📊 Project Workflow
 
-## Installation
+```text
+Raw Dataset
+      │
+      ▼
+Data Cleaning & Preprocessing
+      │
+      ▼
+Data Integration
+      │
+      ▼
+Exploratory Data Analysis
+      │
+      ▼
+Interactive Dashboard
+      │
+      ▼
+Business Insights & Recommendations
+```
 
+---
+
+## 📁 Repository Structure
+
+```text
+EduPro-Learner-Analytics/
+│
+├── dashboard/
+│   ├── app.py
+│   ├── utils.py
+│   └── pages/
+│
+├── data/
+│   ├── raw/
+│   └── processed/
+│
+├── notebooks/
+│   ├── 01_Data_Preprocessing.ipynb
+│   └── 02_EDA.ipynb
+│
+├── reports/
+│
+├── screenshots/
+│
+├── requirements.txt
+├── README.md
+└── LICENSE
+```
+
+---
+
+## 📈 Dashboard Features
+
+The Streamlit dashboard provides:
+
+- Interactive KPI cards
+- Learner demographic analysis
+- Age-wise enrollment analysis
+- Gender distribution
+- Course category popularity
+- Course level analysis
+- Course type analysis
+- Top enrolled courses
+- Age Group vs Course Category Heatmap
+- Gender vs Course Level Comparison
+- Monthly enrollment trends
+- Interactive filtering
+
+---
+
+## 📊 Key Performance Indicators (KPIs)
+
+- Total Learners
+- Total Courses
+- Total Enrollments
+- Average Learner Age
+- Average Courses per Learner
+- Most Popular Course Category
+- Most Preferred Course Level
+
+---
+
+## 🚀 Installation
+
+Clone the repository
+
+```bash
+git clone https://github.com/<your_username>/EduPro-Learner-Analytics.git
+```
+
+Move to the project folder
+
+```bash
+cd EduPro-Learner-Analytics
+```
+
+Install dependencies
+
+```bash
 pip install -r requirements.txt
+```
 
+Run the dashboard
+
+```bash
 streamlit run dashboard/app.py
+```
 
-## Project Structure
+---
 
-The repository follows the requested `data/`, `notebooks/`, `src/`, `dashboard/`, and `reports/` layout. The included CSVs are a small, synthetic starter dataset; replace them with approved source data using the same columns.
+## 📷 Dashboard Preview
 
-## Results
+### Home Dashboard
 
-- Age distribution
-- Gender participation
-- Course popularity
-- Heatmaps
-- KPIs
+> Add Screenshot Here
 
-## Data pipeline
+### Learner Demographics
 
-Run `python -m src.preprocessing` to clean and merge the three raw CSV files into `data/processed/merged_data.csv`. The notebooks provide a guided version of the same workflow.
+> Add Screenshot Here
+
+### Course Analysis
+
+> Add Screenshot Here
+
+### Behavioral Insights
+
+> Add Screenshot Here
+
+---
+
+## 🔍 Key Findings
+
+- The majority of learners belong to the **18–25** age group.
+- Learner participation is balanced across genders.
+- Beginner-level courses receive the highest enrollments.
+- Certain course categories dominate learner interest.
+- Most learners enroll in multiple courses, indicating strong engagement.
+
+---
+
+## 💡 Recommendations
+
+- Expand offerings in high-demand categories.
+- Develop personalized learning paths.
+- Introduce advanced courses for experienced learners.
+- Increase outreach to underrepresented learner segments.
+- Improve learner retention through targeted engagement.
+
+---
+
+## 📌 Future Scope
+
+- Predict learner enrollment using Machine Learning.
+- Build recommendation systems.
+- Analyze learner retention.
+- Perform sentiment analysis on learner feedback.
+- Deploy the dashboard on Streamlit Community Cloud.
+
+---
+
+## 📜 License
+
+This project is developed for educational and academic purposes.

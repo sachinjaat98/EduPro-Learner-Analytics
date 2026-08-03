@@ -8,13 +8,27 @@ def clean_and_merge(users, courses, transactions):
     users = users.drop_duplicates("UserID").copy()
     courses = courses.drop_duplicates("CourseID").copy()
     transactions = transactions.drop_duplicates("TransactionID").copy()
+
     users["Age"] = pd.to_numeric(users["Age"], errors="coerce")
     transactions["EnrollmentDate"] = pd.to_datetime(transactions["EnrollmentDate"], errors="coerce")
     transactions["Amount"] = pd.to_numeric(transactions["Amount"], errors="coerce").fillna(0)
+
     merged = transactions.merge(users, on="UserID", how="left", validate="many_to_one").merge(
         courses, on="CourseID", how="left", validate="many_to_one"
     )
-    merged["AgeGroup"] = pd.cut(merged["Age"], [0, 17, 25, 35, 50, 120], labels=["Under 18", "18-25", "26-35", "36-50", "51+"])
+
+    merged = merged.rename(columns={
+        "Category": "CourseCategory",
+        "Level": "CourseLevel",
+        "EnrollmentDate": "TransactionDate"
+    })
+
+    merged["AgeGroup"] = pd.cut(
+        merged["Age"],
+        [0, 17, 25, 35, 50, 120],
+        labels=["Under 18", "18-25", "26-35", "36-50", "51+"],
+    )
+
     return merged
 
 def build_processed_data(output=None):
