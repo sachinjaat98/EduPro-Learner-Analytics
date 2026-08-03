@@ -4,7 +4,13 @@ import pandas as pd
 import streamlit as st
 
 ROOT_DIR = Path(__file__).resolve().parents[1]
-PROCESSED_DATA_PATH = Path(r"C:\Users\sachi\OneDrive\Desktop\Edupro\EduPro-Learner-Analytics\data\processed\merged_data.csv")
+
+PROCESSED_DATA_PATH = (
+    ROOT_DIR /
+    "data" /
+    "processed" /
+    "merged_data.csv"
+)
 
 st.sidebar.title("🔍 Filters")
 st.sidebar.markdown("---")
@@ -36,10 +42,14 @@ def _normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
 
 @st.cache_data
 def load_data():
+
     df = pd.read_csv(
         PROCESSED_DATA_PATH,
         parse_dates=["TransactionDate"]
     )
+
+    df = _normalize_columns(df)
+
     return df
 
 
